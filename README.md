@@ -43,4 +43,4 @@ chc -l vim
 
 ## Installation
 For now, the script will use your *Documents* folder to store the sheets.
-All sheets will be stored in *Documents/chc_sheets/*
+All sheets will be stored in *~/Documents/chc_sheets/*
