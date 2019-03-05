@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# Cheat sheet script
+# Author Mikkel Birkeland
+
+# Location of sheets ~/Documents/chc_sheets/
+
+# Usage: chc [-a name of sheet] command to be added here
+# chc [-l name of sheet]
+# chc [-c]
+# chc [-h]
+
+# -a will append to sheet
+# -l will list commands in goven sheet
+# -c will list all sheets
+# -h will display available commands and other helpful tips
+# -e will open given file in vim, so you can add/edit commands easily
+
+
+declare sheets=""
+declare show_sheets=""
+declare sheet=""
+declare append=""
+declare append_sheet=""
+declare docs=""
+declare edit=""
+declare editfile=""
+
+while getopts "a:l:e:ch" opt; do
+	case $opt in
+		h)
+			docs="yes"
+			;;
+		c)
+			sheets="yes"
+			;;
+		l)
+			[[ -f ~/Documents/chc_sheets/${OPTARG} ]] || { echo "${OPTARG} is not a sheet" >&2; exit 1; }
+			show_sheet="yes"
+			sheet="${OPTARG}"
+			;;
+		a)
+			append="yes"
+			append_sheet="${OPTARG}"
+			;;
+		e)
+			[[  -f  ~/Documents/chc_sheets/${OPTARG} ]] || { touch ~/Documents/chc_sheets/${OPTARG}; echo "There was no cheat sheet for ${OPTARG}, so it was created"; }
+			edit="yes"
+			editfile="${OPTARG}"
+			;;
+		\?)
+			exit 1
+			;;
+	esac
+done
+
+
+if [[ $docs ]];  then
+	printf "List of commands\n\n-a <sheet> 'command' to append command to <sheet>, remember to put in quotes\n-l <sheet> to list commands in <sheet>\n-c to show all cheat sheets\n-e <sheet> will open <sheet> in vim\n"
+elif [[ $sheets ]]; then
+	ls ~/Documents/chc_sheets/
+elif [[ $show_sheet ]]; then
+	echo "-- Commands in $sheet --"
+	cat ~/Documents/chc_sheets/$sheet
+elif [[ $append ]]; then
+	shift $(( OPTIND -1 ))
+	[[ $1 ]] || { echo "missing command" >&2; exit 1; }
+	echo "$1" >> ~/Documents/chc_sheets/$append_sheet
+	echo "Added command to $append_sheet!"
+elif [[ $edit ]]; then
+	vim ~/Documents/chc_sheets/$editfile
+fi
+
+exit 0
