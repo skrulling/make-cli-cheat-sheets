@@ -26,6 +26,11 @@ Open sheet in vim so you can edit/add commands easily
 chc -e [file]
 ```
 
+Search for commands in your sheets
+```
+chc -s [file] [search term]
+```
+
 ### Examples
 
 
@@ -40,7 +45,17 @@ Display all commands in the sheet *vim*
 chc -l vim
 ```
 
+Search for occurances of the word *insert* in the sheet *vim*
+```
+chc -s vim insert
+```
+
+Search for occurances of the term *insert under* in the sheet *vim*
+```
+chc -s vim "insert under"
+```
 
 ## Installation
 For now, the script will use your *Documents* folder to store the sheets.
 All sheets will be stored in *~/Documents/chc_sheets/*
+Make sure to add the chc file to a folder that is in PATH
