@@ -31,6 +31,11 @@ Search for commands in your sheets
 chc -s [file] [search term]
 ```
 
+Search/find commands in all sheets at once
+```
+chc -f [search term]
+```
+
 ### Examples
 
 
@@ -53,6 +58,11 @@ chc -s vim insert
 Search for occurances of the term *insert under* in the sheet *vim*
 ```
 chc -s vim "insert under"
+```
+
+Search for occurances of the term *insert under* in all sheets 
+```
+chc -f "insert under"
 ```
 
 ## Installation

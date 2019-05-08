@@ -16,6 +16,7 @@
 # -h will display available commands and other helpful tips
 # -e will open given file in vim, so you can add/edit commands easily
 # -s will search for keyword in given file
+# -f will search for keyword in all files
 
 
 declare sheets=""
@@ -28,8 +29,10 @@ declare edit=""
 declare editfile=""
 declare search=""
 declare search_sheet=""
+declare search_all=""
+declare search_word=""
 
-while getopts "s:a:l:e:ch" opt; do
+while getopts "f:s:a:l:e:ch" opt; do
 	case $opt in
 		h)
 			docs="yes"
@@ -56,6 +59,10 @@ while getopts "s:a:l:e:ch" opt; do
 			search="yes"
 			search_sheet="${OPTARG}"
 			;;		
+		f)
+			search_all="yes"
+			search_word="${OPTARG}"
+			;;
 		\?)
 			exit 1
 			;;
@@ -64,7 +71,7 @@ done
 
 
 if [[ $docs ]];  then
-	printf "List of commands\n\n-a <sheet> 'command' to append command to <sheet>, remember to put in quotes\n-l <sheet> to list commands in <sheet>\n-c to show all cheat sheets\n-e <sheet> will open <sheet> in vim\n-s <sheet> <term> will search for term\n"
+	printf "List of commands\n\n-a <sheet> 'command' to append command to <sheet>, remember to put in quotes\n-l <sheet> to list commands in <sheet>\n-c to show all cheat sheets\n-e <sheet> will open <sheet> in vim\n-s <sheet> <term> will search for term\n-f <term> will search all sheets for term\n"
 elif [[ $sheets ]]; then
 	ls ~/Documents/chc_sheets/
 elif [[ $show_sheet ]]; then
@@ -81,6 +88,9 @@ elif [[ $search ]]; then
 	shift $(( OPTIND -1 ))
 	[[ $1 ]] || { echo "missing search argument" >&2; exit 1; }
 	cat ~/Documents/chc_sheets/$search_sheet | grep "$1"
+elif [[ $search_all ]]; then
+#	[[ $search_word == "" ]] || { echo "missing search argument" >&2; exit 1; }
+	grep "$search_word" ~/Documents/chc_sheets/*
 fi
 
 exit 0
