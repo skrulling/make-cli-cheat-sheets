@@ -87,10 +87,10 @@ elif [[ $edit ]]; then
 elif [[ $search ]]; then
 	shift $(( OPTIND -1 ))
 	[[ $1 ]] || { echo "missing search argument" >&2; exit 1; }
-	cat ~/Documents/chc_sheets/$search_sheet | grep "$1"
+	cat ~/Documents/chc_sheets/$search_sheet | grep --color "$1"
 elif [[ $search_all ]]; then
 #	[[ $search_word == "" ]] || { echo "missing search argument" >&2; exit 1; }
-	grep "$search_word" ~/Documents/chc_sheets/*
+	grep --color "$search_word" ~/Documents/chc_sheets/*
 fi
 
 exit 0
