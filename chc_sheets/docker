@@ -1,0 +1,11 @@
+docker ps - list running containers
+docker run --name name - run container named name
+docker stop web - stop running container name web
+docker kill web - kill continaer
+docker exec -it web bash - create new bash process in container
+docker pull alpine3.3 - pull image from repository
+docker push myrepo/myimage - push image to repo
+docker build -t myapp . - build from Dockerfile and tag, in curr dir
+docker images - list all images locally stored
+docker rmi alpine:3.4 - delete local image apline:3.4 
+

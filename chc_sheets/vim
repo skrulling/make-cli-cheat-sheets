@@ -1,0 +1,58 @@
+-- Cut and paste --
+yy - yank a line
+2yy - yank 2 lines
+yw - yank from cursor to start of new word
+y$ - yank to end of line
+p - put
+P - put before cursor
+dd - cut a line
+dw - cut from corsor to next word
+D - cut to end of line
+d$ - cut to end of line
+x - cut char
+
+-- Cursor movement --
+H - move to top of screen
+M - move to middle of screen
+L - move to bottom of screen
+w - jump forward to start of word
+W - jump forwards to the start of a word(can contain punctuation)
+e - jump to end of word
+b - jump backwards to start of word
+0 - jump to start of line
+$ - jump to end of line
+gg - go to first line in document
+G - go to last line of document
+5G - go to line 5
+fx - jump to next occurance of character x
+zz - center cursor on screen
+
+-- Insert mode --
+I - insert at beginning of line
+a - insert after cursor
+A - insert at end of line
+o - insert new line below current
+O - insert new line above current
+ea - insert at end of current word
+
+-- Editing --
+r - replace single char
+cc - replace entire line
+C - change to end of line
+ciw - replace entire word
+cw - replace to end of word
+u - undo
+crtl + r - redo
+. - repeat last command
+
+-- Marking text --
+v - start visual mode
+V - linewise visual mode
+o - move to end of marked area
+aw - mark a word
+ab - a block with ()
+aB - a block with {}
+
+-- Search and replace --
+/pattern - search for pattern
+:%s/old/new/g - replace all old with new in file

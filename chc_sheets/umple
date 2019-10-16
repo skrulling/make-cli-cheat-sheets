@@ -1,0 +1,1 @@
+docker run --rm -ti -p 8000:80 umple/umpleonline >/dev/null
