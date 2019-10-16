@@ -69,3 +69,7 @@ chc -f "insert under"
 For now, the script will use your *Documents* folder to store the sheets.
 All sheets will be stored in *~/Documents/chc_sheets/*
 Make sure to add the chc file to a folder that is in PATH
+
+You can also try to run the ```install.sh``` script.
+This script will add the correct folders and copy over the sheets that are default.
+It will also try to add a folder ```~/bin``` to ```$PATH```
